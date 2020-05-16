@@ -1,12 +1,11 @@
 import Category from './CateEnum';
 class ItemData {
-    id: number;
+    id = -1;
     categoryId: Category;
     title: string;
     content: string;
     createTime: string;
-    constructor(id = -1, categoryId: Category = -1, title = '', content = '') {
-        this.id = id;
+    constructor(categoryId: Category, title = '', content = '') {
         this.categoryId = categoryId;
         this.title = title;
         this.content = content;

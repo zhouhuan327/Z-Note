@@ -1,42 +1,45 @@
-export default class DataHelper {
+import ItemData from '../model/itemData';
+class DataHelper {
     dataKey: string;
-    primaryKey: string;
-    constructor(dataKey: string, primayKey: string) {
+    constructor(dataKey: string) {
         this.dataKey = dataKey;
-        this.primaryKey = primayKey;
     }
-    readData(): Array<any> {
+    readData(): Array<ItemData> {
         const str: string | null = localStorage.getItem(this.dataKey);
-        let data: Array<any> = [];
+        let data: Array<ItemData> = [];
         if (str) {
             data = JSON.parse(str);
         }
         return data;
     }
-    saveData(arrayData: Array<Object>): void {
+    saveData(arrayData: Array<ItemData>): void {
         const str = JSON.stringify(arrayData);
         localStorage.setItem(this.dataKey, str);
     }
-    addData(dataStr: string): number {
-        let data: Array<any> = this.readData();
-
-        let newId = data.length > 0 ? data[data.length - 1][this.primaryKey] + 1 : 1;
-        let obj: Object = {
-            content: dataStr,
-            [this.primaryKey]: newId,
-        };
-        data.push(obj);
-        this.saveData(data);
+    getNewId(data: Array<ItemData>): number {
+        const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1;
         return newId;
     }
-    removeData(primayKey: number): boolean {
-        let data: Array<any> = this.readData();
-        const index = data.findIndex(item => item[this.primaryKey] === primayKey);
+    add(item: ItemData): void {
+        const array = this.readData();
+        const id = this.getNewId(array);
+        item.id = id;
+        array.push(item);
+        this.saveData(array);
+    }
+    update(item: ItemData): void {
+        const array = this.readData();
+        const index = array.findIndex(ele => ele.id === item.id);
+        array[index] = item;
+        this.saveData(array);
+    }
+    remove(id: number): void {
+        const array: Array<ItemData> = this.readData();
+        const index = array.findIndex(item => item.id === id);
         if (index > -1) {
-            data.splice(index, 1);
-            this.saveData(data);
-            return true;
+            array.splice(index, 1);
+            this.saveData(array);
         }
-        return false;
     }
 }
+export default DataHelper;
