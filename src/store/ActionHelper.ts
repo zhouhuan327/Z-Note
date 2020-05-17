@@ -26,9 +26,11 @@ class ActionHelper {
     }
 
     update(item: ItemData): void {
-        const index = this.noteList.findIndex(ele => ele.id === item.id);
-        if (index > -1) {
-            this.noteList[index] = item;
+        const editItem: ItemData | undefined = this.noteList.find(ele => ele.id === item.id);
+        if (editItem) {
+            editItem.categoryId = item.categoryId;
+            editItem.title = item.title;
+            editItem.content = item.content;
             this.dataHelper.saveData(this.noteList);
         }
     }

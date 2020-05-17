@@ -48,10 +48,13 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import ItemData from '../model/ItemData'
+import Category from '../model/CateEnum'
 @Component
 export default class MenuBar extends Vue {
 
   showEditor(){
+    this.$store.state.updatingNote = new ItemData()
     this.$store.state.isShowEditor = true
   }
 }

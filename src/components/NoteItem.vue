@@ -23,7 +23,7 @@
 </template>
 
 <script lang ="ts">
-import ItemData from '../model/itemData'
+import ItemData from '../model/ItemData'
 import {Vue,Component,Prop} from 'vue-property-decorator'
 import ActionHelper from '../store/ActionHelper'
 
@@ -33,8 +33,8 @@ export default class NoteItem extends Vue  {
     @Prop() private note!: ItemData
     
     editNote(){
-
-      return
+      const obj = JSON.parse(JSON.stringify(this.note));
+      this.$store.commit("showEditor",obj)
     }
     deleteNote(): void{
       if(!window.confirm(`确认要删除${this.note.title}的笔记吗`)) return;

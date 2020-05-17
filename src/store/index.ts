@@ -7,9 +7,14 @@ export default new Vuex.Store({
     state: {
         actionHelper: new ActionHelper(),
         isShowEditor: false,
-        updateId: null,
+        updatingNote: null,
     },
-    mutations: {},
+    mutations: {
+        showEditor(state: any, note: any) {
+            state.isShowEditor = true;
+            state.updatingNote = note;
+        },
+    },
     actions: {},
     modules: {},
 });

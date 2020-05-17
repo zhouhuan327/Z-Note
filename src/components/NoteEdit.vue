@@ -50,7 +50,12 @@ export default class NoteEdit extends Vue {
     
     //编辑框数组
     note: ItemData = new ItemData(Category.Life,"","")
-
+    created(){
+      const editNote = this.$store.state.updatingNote;
+      if(editNote){
+        this.note = editNote
+      }
+    }
     closeEditor(){
       this.$store.state.isShowEditor = false
     }
@@ -59,8 +64,12 @@ export default class NoteEdit extends Vue {
       this.note.categoryId > -1 &&
       this.note.title.trim().length > 0 &&
       this.note.content.trim().length > 0){
-
-        this.$store.state.actionHelper.add(this.note)
+        if(this.note.id < 0){
+          this.$store.state.actionHelper.add(this.note)
+        }else{
+           this.$store.state.actionHelper.update(this.note)
+        }
+        
 
         this.$store.state.isShowEditor = false;
       }

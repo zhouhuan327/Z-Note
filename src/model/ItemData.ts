@@ -5,7 +5,7 @@ class ItemData {
     title: string;
     content: string;
     createTime: string;
-    constructor(categoryId: Category, title = '', content = '') {
+    constructor(categoryId = Category.Life, title = '', content = '') {
         this.categoryId = categoryId;
         this.title = title;
         this.content = content;
