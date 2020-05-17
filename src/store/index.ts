@@ -1,15 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
+import Vue from 'vue';
+import Vuex from 'vuex';
+import ActionHelper from './ActionHelper';
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    state: {
+        actionHelper: new ActionHelper(),
+    },
+    mutations: {},
+    actions: {},
+    modules: {},
+});

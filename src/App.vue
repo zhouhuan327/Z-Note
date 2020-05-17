@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <MenuBar />
+    <NoteList />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import MenuBar from '@/components/MenuBar.vue'
+import NoteList from '@/components/NoteList.vue'
 @Component({
   components: {
     MenuBar,
+    NoteList
   },
 })
 export default class App extends Vue {}
