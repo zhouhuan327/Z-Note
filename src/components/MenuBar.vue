@@ -30,7 +30,7 @@
             >
             <ul class="dropdown-menu">
               <li>
-                <a>文本便签</a>
+                <a @click="showEditor">文本便签</a>
               </li>
             </ul>
           </li>
@@ -48,7 +48,13 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-export default class MenuBar extends Vue {}
+@Component
+export default class MenuBar extends Vue {
+
+  showEditor(){
+    this.$store.state.isShowEditor = true
+  }
+}
 </script>
 <style lang="css">
 .navbar-brand > img {

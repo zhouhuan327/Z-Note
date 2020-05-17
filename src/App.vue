@@ -2,6 +2,7 @@
   <div id="app">
     <MenuBar />
     <NoteList />
+    <NoteEdit v-if="$store.state.isShowEditor" />
   </div>
 </template>
 
@@ -9,10 +10,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import MenuBar from '@/components/MenuBar.vue'
 import NoteList from '@/components/NoteList.vue'
+import NoteEdit from '@/components/NoteEdit.vue'
 @Component({
   components: {
     MenuBar,
-    NoteList
+    NoteList,
+    NoteEdit
   },
 })
 export default class App extends Vue {}

@@ -8,12 +8,8 @@ class ActionHelper {
     // 笔记数组
     noteList!: Array<ItemData>;
     constructor() {
-        this.noteList = this.readData();
+        this.noteList = this.dataHelper.readData();
         console.log(this.noteList);
-    }
-    readData(): Array<ItemData> {
-        const arr = this.dataHelper.readData();
-        return arr;
     }
 
     getCategoryName(cateId: Category): string {
@@ -22,19 +18,31 @@ class ActionHelper {
     }
 
     add(item: ItemData): number {
-        const id = this.dataHelper.add(item);
-        this.noteList = this.readData();
+        const id = this.getNewId(this.noteList);
+        item.id = id;
+        this.noteList.push(item);
+        this.dataHelper.saveData(this.noteList);
         return id;
     }
 
-    edit(item: ItemData): void {
-        this.dataHelper.update(item);
-        this.noteList = this.readData();
+    update(item: ItemData): void {
+        const index = this.noteList.findIndex(ele => ele.id === item.id);
+        if (index > -1) {
+            this.noteList[index] = item;
+            this.dataHelper.saveData(this.noteList);
+        }
     }
 
     remove(id: number): void {
-        this.dataHelper.remove(id);
-        this.noteList = this.readData();
+        const index = this.noteList.findIndex(ele => ele.id === id);
+        if (index > -1) {
+            this.noteList.splice(index, 1);
+            this.dataHelper.saveData(this.noteList);
+        }
+    }
+    getNewId(data: Array<ItemData>): number {
+        const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1;
+        return newId;
     }
 }
 

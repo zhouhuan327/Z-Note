@@ -6,9 +6,9 @@
         <h5 class="title">{{note.title}}</h5>
         <ul class="tools">
           <li class="edit"
-              @click="showEdit"></li>
+              @click="editNote">edit</li>
           <li class="delete"
-              @click="doDel"></li>
+              @click="deleteNote">del</li>
         </ul>
       </div>
       <h6 class="memo-info">
@@ -23,10 +23,22 @@
 </template>
 
 <script lang ="ts">
+import ItemData from '../model/itemData'
 import {Vue,Component,Prop} from 'vue-property-decorator'
-import ItemList from './NoteList.vue'
+import ActionHelper from '../store/ActionHelper'
+
 @Component
 export default class NoteItem extends Vue  {
-    @Prop() note!:ItemList
+    private actionHelper: ActionHelper = this.$store.state.actionHelper
+    @Prop() private note!: ItemData
+    
+    editNote(){
+
+      return
+    }
+    deleteNote(): void{
+      if(!window.confirm(`确认要删除${this.note.title}的笔记吗`)) return;
+      this.actionHelper.remove(this.note.id)
+    }
 }
 </script>

@@ -11,4 +11,4 @@ new Vue({
     render: h => h(App),
 }).$mount('#app');
 // const ahelper = new ActionHelper();
-// ahelper.add(new ItemData(Category.Study, 'dfsdr', 'dfdf'));
+// ahelper.add(new ItemData(Category.Life, '学习', '今天学数学'));

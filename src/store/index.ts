@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         actionHelper: new ActionHelper(),
+        isShowEditor: false,
     },
     mutations: {},
     actions: {},
