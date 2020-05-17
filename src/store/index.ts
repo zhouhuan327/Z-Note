@@ -7,6 +7,7 @@ export default new Vuex.Store({
     state: {
         actionHelper: new ActionHelper(),
         isShowEditor: false,
+        updateId: null,
     },
     mutations: {},
     actions: {},

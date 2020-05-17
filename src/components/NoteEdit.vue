@@ -28,7 +28,7 @@
           </ul>
         </div>
         <ul class="tools">
-          <li class="save"
+          <li @click="save" class="save"
              >s</li>
           <li @click="closeEditor" class="cancel"
               >c</li>
@@ -47,11 +47,27 @@ import ItemData from '../model/ItemData'
 import Category from '../model/CateEnum'
 @Component
 export default class NoteEdit extends Vue {
+    
     //编辑框数组
-    note: ItemData = new ItemData(Category.Life,"标题","内容")
+    note: ItemData = new ItemData(Category.Life,"","")
 
     closeEditor(){
       this.$store.state.isShowEditor = false
+    }
+    save(){
+      if( this.note &&
+      this.note.categoryId > -1 &&
+      this.note.title.trim().length > 0 &&
+      this.note.content.trim().length > 0){
+
+        this.$store.state.actionHelper.add(this.note)
+
+        this.$store.state.isShowEditor = false;
+      }
+      else {
+      alert("对不起，输入错误~~！");
+      }
+     
     }
 }
 </script>
