@@ -37,9 +37,36 @@
           <li class="categories dropdown">
             <a class="current-category dropdown-toggle" data-toggle="dropdown">
               全部
-              <span class="count badge"></span>
+              <span class="count badge">{{countByCateId(-1)}}</span>
             </a>
-            <ul class="dropdown-menu"></ul>
+            <ul class="dropdown-menu">
+              <li class="total"
+                  @click="filterByCateId(-1)">
+                <a>
+                  全部
+                  <span class="count badge">{{countByCateId(-1)}}</span>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li @click="filterByCateId(0)">
+                <a>
+                  工作
+                  <span class="count badge">{{countByCateId(0)}}</span>
+                </a>
+              </li>
+              <li @click="filterByCateId(1)">
+                <a>
+                  生活
+                  <span class="count badge">{{countByCateId(1)}}</span>
+                </a>
+              </li>
+              <li @click="filterByCateId(2)">
+                <a>
+                  学习
+                  <span class="count badge">{{countByCateId(2)}}</span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -49,10 +76,21 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ItemData from '../model/ItemData'
-import Category from '../model/CateEnum'
+
 @Component
 export default class MenuBar extends Vue {
-
+  countByCateId(id: number): number{
+    const noteList = this.$store.state.actionHelper.noteList;
+    if(id === -1){
+      return noteList.length
+    }else{
+      return noteList.filter((ele: ItemData) => ele.categoryId === id).length;
+    }
+    
+  }
+  filterByCateId(id: number): void{
+    this.$store.state.filterCateId = id;
+  }
   showEditor(){
     this.$store.state.updatingNote = new ItemData()
     this.$store.state.isShowEditor = true

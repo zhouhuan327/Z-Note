@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         actionHelper: new ActionHelper(),
         isShowEditor: false,
-        updatingNote: null,
+        updatingNote: null, //当前正在修改的笔记
+        filterCateId: -1, //当前筛选的笔记类型id
     },
     mutations: {
         showEditor(state: any, note: any) {
