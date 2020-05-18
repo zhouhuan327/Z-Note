@@ -6,9 +6,9 @@
         <h5 class="title">{{note.title}}</h5>
         <ul class="tools">
           <li class="edit"
-              @click="editNote">edit</li>
+              @click="editNote"><i class="iconfont icon-edit"></i></li>
           <li class="delete"
-              @click="deleteNote">del</li>
+              @click="deleteNote"><i class="iconfont icon-delete-materialco"></i></li>
         </ul>
       </div>
       <h6 class="memo-info">

@@ -1,5 +1,12 @@
 const path = require("path");
 module.exports = {
+    css: {
+        loaderOptions: {
+            sass: {
+                prependData: ` @import "~@/styles/index.scss";`
+            }
+        }
+    },
     configureWebpack: config => {
         Object.assign(config, {
             // 开发生产共同配置

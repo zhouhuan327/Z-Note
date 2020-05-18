@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 import store from './store';
-import ActionHelper from './store/ActionHelper';
-import ItemData from './model/ItemData';
-import Category from './model/CateEnum';
+// global css
+import '@/styles/index.scss';
+
 Vue.config.productionTip = false;
 
 new Vue({

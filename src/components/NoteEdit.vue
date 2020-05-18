@@ -29,9 +29,9 @@
         </div>
         <ul class="tools">
           <li @click="save" class="save"
-             >s</li>
+             ><i class="iconfont icon-save"></i></li>
           <li @click="closeEditor" class="cancel"
-              >c</li>
+              ><i class="iconfont icon-close"></i></li>
         </ul>
       </div>
       <textarea class="text-content form-control"
