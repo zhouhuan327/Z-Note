@@ -1,5 +1,10 @@
 const path = require("path");
 module.exports = {
+    publicPath: './',
+    outputDir: 'dist',
+    assetsDir: "assets",
+    productionSourceMap: false,
+    filenameHashing: true,
     css: {
         loaderOptions: {
             sass: {
