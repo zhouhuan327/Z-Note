@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import App from './App.vue';
 import store from './store';
-// global css
-import '@/styles/index.scss';
 import ActionHelper from '@/store/ActionHelper';
 import ItemData from './model/ItemData';
+import '@/styles/index.scss'; // global css
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
 Vue.config.productionTip = false;
 
 //初始化一些数据
