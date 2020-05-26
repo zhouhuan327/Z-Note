@@ -1,6 +1,8 @@
 <template>
-    <div class="note-list">
-       <NoteItem v-for="item in filterNotes()" :key="item.id" :note="item" />
+    <div >
+        <transition-group name="staggered-fade" class="note-list">
+            <NoteItem v-for="item in filterNotes()" :key="item.id" :note="item" />
+        </transition-group>
     </div>
 </template>
 
@@ -37,6 +39,5 @@ export default class NoteList extends Vue{
         align-items: flex-start;
         flex-wrap: wrap;
         max-height: 90vh;
-
     }
 </style>

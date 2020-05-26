@@ -20,13 +20,13 @@
 <!--      </div>-->
 <!--    </div>-->
 <!--  </div>-->
-  <el-card class="box-card" :body-style="{ maxHeight: '80px' }">
+  <el-card class="box-card" :body-style="{ minHeight: '50px',maxHeight:'90px' }">
     <div slot="header">
       <el-row class="row-title"  type="flex">
-        <el-col :span="18">
+        <el-col :lg="18" :md="16" :sm="16" :xs="16">
           <span class="note-title">{{note.title}}</span>
         </el-col>
-        <el-col style="text-align: right"  :span="6">
+        <el-col  style="text-align: right"  :lg="6" :md="8" :sm="8" :xs="8">
           <svg  @click="editNote" class="icon mr10" aria-hidden="true">
             <use xlink:href="#icon-edit"></use>
           </svg>
@@ -37,7 +37,9 @@
         </el-col>
       </el-row>
       <el-row >
-        <el-col :lg="18" :md="16" :sm="16" :xs="16"><time class="time">{{note.createTime}}</time></el-col>
+        <el-col :lg="18" :md="16" :sm="16" :xs="16">
+          <div class="time">{{note.createTime}}</div>
+        </el-col>
         <el-col :lg="6" :md="8" :sm="8" :xs="8">
           <svg class="icon" aria-hidden="true">
             <use :xlink:href="`#${getIconName}`"></use>
@@ -62,8 +64,8 @@ export default class NoteItem extends Vue  {
     @Prop() private note!: ItemData
     
     editNote(){
-      const obj = JSON.parse(JSON.stringify(this.note));
-      this.$store.commit("showEditor",obj)
+      const note = JSON.parse(JSON.stringify(this.note));
+      this.$store.commit("showEditor",note)
     }
     deleteNote(): void{
       if(!window.confirm(`确认要删除${this.note.title}的笔记吗`)) return;
@@ -86,6 +88,7 @@ export default class NoteItem extends Vue  {
     width: 1.5em;
     height: 1.5em;
     cursor: pointer;
+    vertical-align: -0.15em;
   }
 
   .box-card {
@@ -105,8 +108,12 @@ export default class NoteItem extends Vue  {
       margin-right: 14px;
       cursor: pointer;
     }
+    .el-row{
+      height: 25px;
+      line-height: 25px
+    }
     .row-title{
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .note-title{
       font-size: 16px;

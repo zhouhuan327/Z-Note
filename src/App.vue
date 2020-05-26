@@ -2,7 +2,9 @@
   <div id="app">
     <el-header> <MenuBar /></el-header>
     <el-main><NoteList /></el-main>
-    <NoteEdit v-if="$store.state.isShowEditor" />
+    <transition name="fade">
+      <NoteEdit v-if="$store.state.isShowEditor" />
+    </transition>
   </div>
 </template>
 
@@ -29,4 +31,5 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
 }
+
 </style>
