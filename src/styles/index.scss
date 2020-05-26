@@ -55,3 +55,8 @@ div:focus {
         height: 0;
     }
 }
+.el-main{
+    @media screen and(max-width: 500px) {
+        padding: 10px 3px !important;
+    }
+}

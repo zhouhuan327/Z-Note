@@ -22,7 +22,7 @@
 <!--  </div>-->
   <el-card class="box-card" :body-style="{ maxHeight: '80px' }">
     <div slot="header">
-      <el-row class="row-title" justify="center"  type="flex">
+      <el-row class="row-title"   type="flex">
         <el-col :span="18">
           <span class="note-title">{{note.title}}</span>
         </el-col>
@@ -32,11 +32,11 @@
         </el-col>
       </el-row>
       <el-row justify="center">
-        <el-col :span="18"><time class="time">{{note.createTime}}</time></el-col>
-        <el-col :span="6">分类: <span>{{$store.state.actionHelper.getCategoryName(note.categoryId) }}</span></el-col>
+        <el-col :lg="18" :md="16" :sm="12"><time class="time">{{note.createTime}}</time></el-col>
+        <el-col :lg="6" :md="8" :sm="12">分类: <span>{{$store.state.actionHelper.getCategoryName(note.categoryId) }}</span></el-col>
       </el-row>
     </div>
-    <div  class="content">
+    <div ref="text"  class="content">
       {{FilterContent}}
     </div>
   </el-card>
@@ -68,7 +68,8 @@ export default class NoteItem extends Vue  {
 </script>
 <style scoped lang="scss">
   .box-card {
-    width: 380px;
+    width: 25vw;
+    min-width: 250px;
     margin: 10px 20px;
     .content{
       text-align: left;
@@ -92,6 +93,13 @@ export default class NoteItem extends Vue  {
     }
     .time{
       color: #757575;
+    }
+    @media screen and(max-width: 500px) {
+      width: 95%;
+      margin: 10px 0;
+      .row-title{
+        text-align: left;
+      }
     }
   }
 </style>

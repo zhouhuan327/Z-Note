@@ -15,6 +15,7 @@ import NoteItem from '@/components/NoteItem.vue'
 })
 export default class NoteList extends Vue{
     noteList: Array<ItemData> = this.$store.state.actionHelper.noteList;
+
     constructor(){
         super()
     }
@@ -32,7 +33,7 @@ export default class NoteList extends Vue{
 <style lang="scss">
     .note-list{
         display: flex;
-        justify-content:start;
+        justify-content:center;
         align-items: center;
         flex-wrap: wrap;
     }
