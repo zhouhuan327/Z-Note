@@ -13,8 +13,8 @@ class ActionHelper {
     }
 
     getCategoryName(cateId: Category): string {
-        const arrName = ['工作', '生活', '学习'];
-        return arrName[cateId];
+
+        return Category[cateId];
     }
 
     add(item: ItemData): number {

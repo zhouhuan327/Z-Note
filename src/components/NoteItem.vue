@@ -32,8 +32,8 @@
         </el-col>
       </el-row>
       <el-row justify="center">
-        <el-col :lg="18" :md="16" :sm="12"><time class="time">{{note.createTime}}</time></el-col>
-        <el-col :lg="6" :md="8" :sm="12">分类: <span>{{$store.state.actionHelper.getCategoryName(note.categoryId) }}</span></el-col>
+        <el-col :lg="18" :md="16" :sm="16" :xs="16"><time class="time">{{note.createTime}}</time></el-col>
+        <el-col :lg="6" :md="8" :sm="8" :xs="8"><i class="iconfont" :class="getIconName"></i></el-col>
       </el-row>
     </div>
     <div ref="text"  class="content">
@@ -64,6 +64,12 @@ export default class NoteItem extends Vue  {
       const str = this.note.content;
       return str.length>45?str.slice(0,40)+'...':str;
     }
+    get getIconName(){
+      const type = this.$store.state.actionHelper.getCategoryName(this.note.categoryId).toLowerCase()
+      return `icon-${type}`
+
+    }
+
 }
 </script>
 <style scoped lang="scss">
@@ -98,7 +104,7 @@ export default class NoteItem extends Vue  {
       width: 95%;
       margin: 10px 0;
       .row-title{
-        text-align: left;
+
       }
     }
   }

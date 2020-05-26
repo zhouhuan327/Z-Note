@@ -34,7 +34,9 @@ export default class NoteList extends Vue{
     .note-list{
         display: flex;
         justify-content:center;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
+        max-height: 90vh;
+
     }
 </style>
