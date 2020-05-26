@@ -117,14 +117,7 @@ export default class MenuBar extends Vue {
 }
 </script>
 <style lang="scss" scoped >
-  .iconfont{
-    font-family:"iconfont",serif !important;
-    font-size:16px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    margin-right: 15px;
-  }
+
   .menu-bar{
     .logo{
       width: 50px;

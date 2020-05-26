@@ -22,18 +22,27 @@
 <!--  </div>-->
   <el-card class="box-card" :body-style="{ maxHeight: '80px' }">
     <div slot="header">
-      <el-row class="row-title"   type="flex">
+      <el-row class="row-title"  type="flex">
         <el-col :span="18">
           <span class="note-title">{{note.title}}</span>
         </el-col>
         <el-col style="text-align: right"  :span="6">
-            <i @click="deleteNote"  class="iconfont icon-delete-materialco"></i>
-            <i @click="editNote" class="iconfont icon-edit"></i>
+          <svg  @click="editNote" class="icon mr10" aria-hidden="true">
+            <use xlink:href="#icon-edit"></use>
+          </svg>
+          <svg @click="deleteNote" class="icon mr10" aria-hidden="true">
+            <use xlink:href="#icon-delete"></use>
+          </svg>
+
         </el-col>
       </el-row>
-      <el-row justify="center">
+      <el-row >
         <el-col :lg="18" :md="16" :sm="16" :xs="16"><time class="time">{{note.createTime}}</time></el-col>
-        <el-col :lg="6" :md="8" :sm="8" :xs="8"><i class="iconfont" :class="getIconName"></i></el-col>
+        <el-col :lg="6" :md="8" :sm="8" :xs="8">
+          <svg class="icon" aria-hidden="true">
+            <use :xlink:href="`#${getIconName}`"></use>
+          </svg>
+        </el-col>
       </el-row>
     </div>
     <div ref="text"  class="content">
@@ -73,6 +82,12 @@ export default class NoteItem extends Vue  {
 }
 </script>
 <style scoped lang="scss">
+  .icon{
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+  }
+
   .box-card {
     width: 25vw;
     min-width: 250px;
@@ -98,6 +113,7 @@ export default class NoteItem extends Vue  {
       color: #757575;
     }
     .time{
+      height: 100%;
       color: #757575;
     }
     @media screen and(max-width: 500px) {
