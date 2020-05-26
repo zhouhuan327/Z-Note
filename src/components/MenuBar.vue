@@ -1,15 +1,22 @@
 <template>
-    <el-menu class="menu" mode="horizontal">
-      <el-menu-item><img class="logo" src="../assets/logo.png" alt=""></el-menu-item>
-      <el-menu-item >新增</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">笔记</template>
-        <el-menu-item index="2-1"><i class="iconfont icon-all"></i>全部<span class="count">{{countByCateId(-1)}}</span></el-menu-item>
-        <el-menu-item index="2-2"><i class="iconfont icon-work"></i>工作<span class="count">{{countByCateId(0)}}</span></el-menu-item>
-        <el-menu-item index="2-3"><i class="iconfont icon-life"></i>生活<span class="count">{{countByCateId(1)}}</span></el-menu-item>
-        <el-menu-item index="2-4"><i class="iconfont icon-study"></i>学习<span class="count">{{countByCateId(2)}}</span></el-menu-item>
-      </el-submenu>
-    </el-menu>
+    <div class="menu-bar">
+      <el-menu mode="horizontal">
+        <el-menu-item><img class="logo" src="../assets/logo.png" alt=""></el-menu-item>
+        <el-menu-item  @click="showEditor" >新增</el-menu-item>
+        <el-submenu index="2">
+          <template slot="title">笔记</template>
+          <el-menu-item  @click="filterByCateId(-1)" index="2-1"><i class="iconfont icon-all"></i>全部<span class="count">{{countByCateId(-1)}}</span></el-menu-item>
+          <el-menu-item  @click="filterByCateId(0)" index="2-2"><i class="iconfont icon-work"></i>工作<span class="count">{{countByCateId(0)}}</span></el-menu-item>
+          <el-menu-item  @click="filterByCateId(1)" index="2-3"><i class="iconfont icon-life"></i>生活<span class="count">{{countByCateId(1)}}</span></el-menu-item>
+          <el-menu-item  @click="filterByCateId(2)" index="2-4"><i class="iconfont icon-study"></i>学习<span class="count">{{countByCateId(2)}}</span></el-menu-item>
+        </el-submenu>
+<!--        <el-menu-item>-->
+<!--          <el-input placeholder="请输入内容">-->
+<!--            <el-button slot="append" icon="el-icon-search"></el-button>-->
+<!--          </el-input>-->
+<!--        </el-menu-item>-->
+      </el-menu>
+    </div>
 
   <!-- 菜单栏 -->
 <!--  <nav class="navbar navbar-default navbar-fixed-top">-->
@@ -109,7 +116,7 @@ export default class MenuBar extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped >
   .iconfont{
     font-family:"iconfont",serif !important;
     font-size:16px;font-style:normal;
@@ -118,17 +125,23 @@ export default class MenuBar extends Vue {
     -moz-osx-font-smoothing: grayscale;
     margin-right: 15px;
   }
-  .menu{
+  .menu-bar{
     .logo{
       width: 50px;
       height: 50px;
-      margin:0 25px;
-    }
-    .count{
-      display: flex;
-      color: black;
+      margin:0 5px;
     }
 
   }
-
+  .count{
+    display: inline-block;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 4px;
+    padding: 0 5px;
+    background: #909399;
+    height: 20px;
+    color:#fff;
+    margin-left: 10px;
+  }
 </style>

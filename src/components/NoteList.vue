@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="note-list">
        <NoteItem v-for="item in filterNotes()" :key="item.id" :note="item" />
     </div>
 </template>
 
 <script lang = "ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import ItemData from '../model/ItemData'
 import NoteItem from '@/components/NoteItem.vue'
 @Component({
@@ -29,3 +29,11 @@ export default class NoteList extends Vue{
     
 }
 </script>
+<style lang="scss">
+    .note-list{
+        display: flex;
+        justify-content:start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+</style>

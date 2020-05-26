@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-header> <MenuBar /></el-header>
-    <NoteList />
+    <el-main><NoteList /></el-main>
     <NoteEdit v-if="$store.state.isShowEditor" />
   </div>
 </template>
