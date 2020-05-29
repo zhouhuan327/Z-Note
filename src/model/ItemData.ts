@@ -1,7 +1,7 @@
 import Category from './CateEnum';
 class ItemData {
     id = -1;
-    categoryId: Category;
+    categoryId: number;
     title: string;
     content: string;
     createTime: string;
@@ -14,9 +14,8 @@ class ItemData {
 
     getDate(): string {
         const date = new Date(Date.now());
-        const str = `${date.getFullYear()}-${date.getMonth() +
+        return `${date.getFullYear()}-${date.getMonth() +
             1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
-        return str;
     }
 }
 export default ItemData;

@@ -1,5 +1,5 @@
 enum Category {
-    Wrok = 0,
+    Work = 0,
     Life = 1,
     Study = 2,
 }

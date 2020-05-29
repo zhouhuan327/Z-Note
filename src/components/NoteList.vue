@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <transition-group name="staggered-fade" class="note-list">
             <NoteItem v-for="item in filterNotes()" :key="item.id" :note="item" />
         </transition-group>
