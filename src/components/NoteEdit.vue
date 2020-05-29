@@ -84,9 +84,13 @@ export default class NoteEdit extends Vue {
         
 
         this.$store.state.isShowEditor = false;
+        this.$message({
+          message: '操作成功',
+          type: 'success'
+        })
       }
       else {
-      alert("对不起，输入错误~~！");
+        alert("对不起，输入错误~~！");
       }
     }
     getIconName(id: number): string{

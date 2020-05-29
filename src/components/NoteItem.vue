@@ -1,25 +1,4 @@
 <template>
-<!--   <div class="memo-container">-->
-<!--    <div class="memo">-->
-<!--      <div class="mark"></div>-->
-<!--      <div class="memo-heading">-->
-<!--        <h5 class="title">{{note.title}}</h5>-->
-<!--        <ul class="tools">-->
-<!--          <li class="edit"-->
-<!--              @click="editNote"><i class="iconfont icon-edit"></i></li>-->
-<!--          <li class="delete"-->
-<!--              @click="deleteNote"><i class="iconfont icon-delete-materialco"></i></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <h6 class="memo-info">-->
-<!--        <span class="timeStamp">{{note.createTime}}</span>-->
-<!--        <span class="category">分类: {{$store.state.actionHelper.getCategoryName(note.categoryId) }}</span>-->
-<!--      </h6>-->
-<!--      <div class="content">-->
-<!--        <div class="text">{{note.content}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
   <el-card class="box-card" :body-style="{ minHeight: '50px',maxHeight:'90px' }">
     <div slot="header">
       <el-row class="row-title"  type="flex">
@@ -68,8 +47,15 @@ export default class NoteItem extends Vue  {
       this.$store.commit("showEditor",note)
     }
     deleteNote(): void{
-      if(!window.confirm(`确认要删除${this.note.title}的笔记吗`)) return;
-      this.actionHelper.remove(this.note.id)
+      this.$confirm('确定吗','提示',{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(()=>{
+        this.actionHelper.remove(this.note.id)
+        this.$message('删除成功')
+      })
+
     }
     get FilterContent(){
       const str = this.note.content;
@@ -117,15 +103,19 @@ export default class NoteItem extends Vue  {
     }
     .note-title{
       font-size: 16px;
-      color: #757575;
+      color: #3d3737;
     }
     .time{
       height: 100%;
-      color: #757575;
+      font-size: 14px;
+      color: rgba(117, 117, 117, 0.66);
     }
     @media screen and(max-width: 600px) {
       width: 95%;
       margin: 10px 0;
+    }
+    &:hover{
+      box-shadow:0 2px 12px 0 rgba(0,0,0,0.4)
     }
   }
 </style>

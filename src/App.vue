@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <el-header> <MenuBar /></el-header>
-    <el-main><NoteList /></el-main>
+    <el-header>
+      <MenuBar />
+    </el-header>
+    <el-main>
+      <NoteList />
+    </el-main>
     <transition name="fade">
       <NoteEdit v-if="$store.state.isShowEditor" />
     </transition>
