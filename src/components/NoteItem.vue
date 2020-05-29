@@ -123,12 +123,9 @@ export default class NoteItem extends Vue  {
       height: 100%;
       color: #757575;
     }
-    @media screen and(max-width: 500px) {
+    @media screen and(max-width: 600px) {
       width: 95%;
       margin: 10px 0;
-      .row-title{
-
-      }
     }
   }
 </style>

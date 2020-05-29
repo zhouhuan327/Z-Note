@@ -83,7 +83,7 @@ export default class NoteEdit extends Vue {
     }
 }
 </script>
-<style type="scss" scoped>
+<style lang="scss" scoped>
   .wrapper{
     position: fixed;
     top: 0;
@@ -104,9 +104,10 @@ export default class NoteEdit extends Vue {
     width: 50%;
     min-height: 100px;
     border-radius: 5px;
-
+    @media screen and(max-width: 600px) {
+      width: 98%;
+    }
   }
-  .box{
 
-  }
+
 </style>
