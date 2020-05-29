@@ -22,7 +22,7 @@ import NoteEdit from '@/components/NoteEdit.vue'
 })
 export default class App extends Vue {}
 </script>
-
+ 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
