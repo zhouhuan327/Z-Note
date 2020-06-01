@@ -12,7 +12,6 @@
           <svg @click="deleteNote" class="icon mr10" aria-hidden="true">
             <use xlink:href="#icon-delete"></use>
           </svg>
-
         </el-col>
       </el-row>
       <el-row >
@@ -47,14 +46,17 @@ export default class NoteItem extends Vue  {
       this.$store.commit("showEditor",note)
     }
     deleteNote(): void{
-      this.$confirm('确定吗','提示',{
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(()=>{
-        this.actionHelper.remove(this.note.id)
-        this.$message('删除成功')
-      })
+      // this.$confirm('确定吗','提示',{
+      //   confirmButtonText: '确定',
+      //   cancelButtonText: '取消',
+      //   type: 'warning'
+      // }).then(()=>{
+      //   this.actionHelper.remove(this.note.id)
+      //   this.$message('删除成功')
+      // })
+      if(!window.confirm(`确认要删除${this.note.title}的笔记吗`)) return;
+      this.actionHelper.remove(this.note.id)
+      this.$message('删除成功')
 
     }
     get FilterContent(){
@@ -111,8 +113,9 @@ export default class NoteItem extends Vue  {
       color: rgba(117, 117, 117, 0.66);
     }
     @media screen and(max-width: 600px) {
-      width: 95%;
+      width: 100%;
       margin: 10px 0;
+      border-radius: 20px;
     }
     &:hover{
       box-shadow:0 2px 12px 0 rgba(0,0,0,0.4)

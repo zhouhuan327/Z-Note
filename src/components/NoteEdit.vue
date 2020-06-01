@@ -152,7 +152,7 @@ export default class NoteEdit extends Vue {
       top: auto;
       left: 0;
       width: 100%;
-      height: 95%;
+      height: 90%;
       bottom: 0;
       border-radius: 15px;
       animation: slide-enter 0.4s ease;
@@ -161,8 +161,13 @@ export default class NoteEdit extends Vue {
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        height: 6%;
-        padding: 0 15px;
+        height:60px;
+        padding: 10px 15px;
+      }
+      main{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
       }
       .title{
         >input{
@@ -171,7 +176,10 @@ export default class NoteEdit extends Vue {
         }
       }
       .el-textarea{
-
+        height: 100%;
+        >textarea{
+          height: 100%;
+        }
       }
       .category-select{
         width: 120px;
@@ -186,7 +194,7 @@ export default class NoteEdit extends Vue {
      height: 0;
    }
    to {
-     height: 95%;
+     height: 90%;
    }
 
  }
