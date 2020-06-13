@@ -1,8 +1,8 @@
 <template>
     <div>
-        <transition-group name="staggered-fade" class="note-list">
-            <NoteItem v-for="item in filterNotes()" :key="item.id" :note="item" />
-        </transition-group>
+<!--        <transition-group name="fade" class="note-list" mode="out-in">-->
+            <NoteItem v-for="item in filterNotes" :key="item.id" :note="item" />
+<!--        </transition-group>-->
     </div>
 </template>
 
@@ -21,7 +21,7 @@ export default class NoteList extends Vue{
     constructor(){
         super()
     }
-    filterNotes(){
+    get filterNotes(){
         const cateId = this.$store.state.filterCateId;
         if(cateId === -1){
             return this.noteList
@@ -32,7 +32,7 @@ export default class NoteList extends Vue{
     
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .note-list{
         display: flex;
         justify-content:center;

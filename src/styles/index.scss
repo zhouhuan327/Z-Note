@@ -1,7 +1,7 @@
 @import './transition.scss';
-@import './reset.scss';
 @import './variables.scss';
-html,body {
+html,
+body {
     height: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@ a:hover {
 div:focus {
     outline: none;
 }
-.iconfont{
+.iconfont {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
@@ -68,13 +68,13 @@ div:focus {
         height: 0;
     }
 }
-.mr10{
+.mr10 {
     margin-right: 10px;
 }
-.mt10{
+.mt10 {
     margin-top: 10px;
 }
-.el-main{
+.el-main {
     @media screen and (max-width: 600px) {
         padding: 10px 3px !important;
     }
